@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>显示用户</title>
+<script type="text/javascript"> 
+
+	function confirmd() {
+		return confirm("确定删除吗？") ? true : false;
+	} 
+	 
+</script>
+</head>
+<body>
+    <h1 align="center">用户信息</h1>
+	<table border="1" align="center" width="35%">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Age</th>
+			<th>操作</th>
+		</tr>
+		<tr th:each="user:${list}">
+			<td th:text="${user.id}"></td>
+			<td th:text="${user.name}"></td>
+			<td th:text="${user.age}"></td>
+			<td>
+				<a th:href="@{/users/findUserById(id=${user.id})}">更新用户</a>
+				<a th:href="@{/users/deleteUserById(id=${user.id})}" onclick="return confirmd()">删除用户</a>
+			</td>
+		</tr>
+	</table>
+	
+</body>
+</html>
